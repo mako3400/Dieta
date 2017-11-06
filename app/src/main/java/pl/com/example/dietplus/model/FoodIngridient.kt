@@ -25,8 +25,8 @@ data class FoodIngridient(
      * woman = 8 mg
      */
     val intake
-        get() = """${"\u2642"} = $dailyMale ${unit.getName()}
-                  |${"\u2640"} $dailyFem ${unit.getName()}""".trimMargin()
+        get() = """${"\u2642"} = $dailyMale ${unit.getLocalName()}
+                  |${"\u2640"} $dailyFem ${unit.getLocalName()}""".trimMargin()
 
     /**
      * Drawable nagłówka składnika odżywczego
@@ -48,26 +48,17 @@ data class FoodIngridient(
  */
 enum class IntakeDoseUnit {
     GRAM() {
-        override fun getName() {
-            App.appContext.getString(R.string.gram)
-        }
+        override fun getLocalName() = App.appContext.getString(R.string.gram)
     },
     MGRAM() {
-        override fun getName() {
-            App.appContext.getString(R.string.miligram)
-
-        }
+        override fun getLocalName() = App.appContext.getString(R.string.miligram)
     },
     UGRAM() {
-        override fun getName() {
-            App.appContext.getString(R.string.mikrogram)
-        }
+        override fun getLocalName() = App.appContext.getString(R.string.mikrogram)
     },
     IU() {
-        override fun getName() {
-            App.appContext.getString(R.string.unifiedunit)
-        }
+        override fun getLocalName() = App.appContext.getString(R.string.unifiedunit)
     };
 
-    abstract fun getName()
+    abstract fun getLocalName(): String?
 }
