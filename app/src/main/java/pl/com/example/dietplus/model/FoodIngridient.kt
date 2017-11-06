@@ -1,21 +1,38 @@
 package pl.com.example.dietplus.model
 
+import android.graphics.drawable.Drawable
+import android.support.v4.content.res.ResourcesCompat
 import pl.com.example.dietplus.App
 import pl.com.example.dietplus.R
 
 /**
  * Model danych dla składnika pokarmowego
  */
-class FoodIngridient(
+data class FoodIngridient(
         val id: Int,
         val name: String,
         val desc: String,
         val danger: String,
         val foodExample: String,
-        val dailyMale: String,
-        val dailyFem: String,
-        val unit: IntakeDoseUnit,
-        val imgName: String) {
+        private val dailyMale: String,
+        private val dailyFem: String,
+        private val unit: IntakeDoseUnit,
+        private val imgName: String) {
+
+    val intake
+        get() = """${"\u2642"} = $dailyMale ${unit.getName()}
+                  |${"\u2640"} $dailyFem ${unit.getName()}""".trimMargin()
+
+    val drawable: Drawable?
+        get() {
+            val ctx = App.appContext
+            val id = ctx.resources.getIdentifier(imgName, DRAWABLE_TYPE_DEF, ctx.packageName)
+            return ResourcesCompat.getDrawable(ctx.resources, id, null)
+        }
+
+    companion object {
+        const val DRAWABLE_TYPE_DEF = "drawable"
+    }
 }
 
 enum class IntakeDoseUnit {
