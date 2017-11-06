@@ -19,10 +19,18 @@ data class FoodIngridient(
         private val unit: IntakeDoseUnit,
         private val imgName: String) {
 
+    /**
+     * Tekst dziennego zapotrzebowania w formacie
+     * man = 10 mg
+     * woman = 8 mg
+     */
     val intake
         get() = """${"\u2642"} = $dailyMale ${unit.getName()}
                   |${"\u2640"} $dailyFem ${unit.getName()}""".trimMargin()
 
+    /**
+     * Drawable nagłówka składnika odżywczego
+     */
     val drawable: Drawable?
         get() {
             val ctx = App.appContext
@@ -35,6 +43,9 @@ data class FoodIngridient(
     }
 }
 
+/**
+ * Typ wyliczeniowy jednostek zapotrzebowania dziennego
+ */
 enum class IntakeDoseUnit {
     GRAM() {
         override fun getName() {
