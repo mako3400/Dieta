@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.github.florent37.materialviewpager.MaterialViewPager
+        android:id="@+id/materialpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:viewpager_color="@color/black"
