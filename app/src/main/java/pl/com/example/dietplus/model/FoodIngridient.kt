@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.support.v4.content.res.ResourcesCompat
 import pl.com.example.dietplus.App
 import pl.com.example.dietplus.R
+import java.io.Serializable
 
 /**
  * Model danych dla składnika pokarmowego
@@ -17,7 +18,7 @@ data class FoodIngridient(
         private val dailyMale: String,
         private val dailyFem: String,
         private val unit: IntakeDoseUnit,
-        private val imgName: String) {
+        private val imgName: String) :Serializable {
 
     /**
      * Tekst dziennego zapotrzebowania w formacie

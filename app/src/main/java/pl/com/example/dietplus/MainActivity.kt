@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initPager() {
         materialpager.viewPager.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int) = Fragment()
+            override fun getItem(position: Int) = RecyclerViewFragment.newInstance(ingridientArray[position])
             override fun getCount() = ingridientArray.size
             override fun getPageTitle(position: Int) = ingridientArray[position].name
         }
