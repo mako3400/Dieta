@@ -27,7 +27,7 @@ data class FoodIngridient(
      */
     val intake
         get() = """${"\u2642"} = $dailyMale ${unit.getLocalName()}
-                  |${"\u2640"} $dailyFem ${unit.getLocalName()}""".trimMargin()
+                  |${"\u2640"} = $dailyFem ${unit.getLocalName()}""".trimMargin()
 
     /**
      * Drawable nagłówka składnika odżywczego
@@ -58,6 +58,9 @@ enum class IntakeDoseUnit {
         override fun getLocalName() = App.appContext.getString(R.string.mikrogram)
     },
     IU() {
+        override fun getLocalName() = App.appContext.getString(R.string.unifiedunit)
+    },
+    UNKNOWN() {
         override fun getLocalName() = App.appContext.getString(R.string.unifiedunit)
     };
 
